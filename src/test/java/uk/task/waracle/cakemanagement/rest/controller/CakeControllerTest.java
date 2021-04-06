@@ -84,8 +84,6 @@ public class CakeControllerTest {
 	public void shouldDeleteSuccessfully() throws Exception {
 		Cake cake = new Cake("ButterScotch", "WithEgg", 55);
 		cake.setId(20L);
-		// Here , CakeService is not a real instance , so mocking deleteCake() method ,
-		// CakeServiceTest does already testing the deleteCake() method
 		Mockito.doNothing().when(cakeService).deleteCake(Mockito.eq(cake.getId()));
 		String deleteUri = String.format("/cakes/%d", cake.getId());
 		MockHttpServletRequestBuilder delete = MockMvcRequestBuilders.delete(deleteUri).contentType(MediaType.APPLICATION_JSON);
